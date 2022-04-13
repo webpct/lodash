@@ -12,6 +12,6 @@
  * // => 10
  */
 const add = (augend, addend) => {
-
+    return augend + addend;
 }
 export default add
