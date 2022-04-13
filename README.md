@@ -1,17 +1,18 @@
-###Set up:
+### Set up:
 
 ```npm i```
 
-###Run tests:
+### Run tests:
 
 ```npm run test```
 
-###Commit standart:
+### Commit standart:
 [fileName] - description
 One function one commit.
 
-####Example
+#### Example
 [parseInt] - implement function
+
 [parseInt] - fix floating bug
 
 Please be sure that your code passes tests before sending it
