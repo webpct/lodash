@@ -12,6 +12,6 @@
  * // => 10
  */
 const add = (augend, addend) => {
-
+  console.log('fff');
 }
 export default add
