@@ -16,12 +16,10 @@
  * // => Logs 'done saving!' after the two async saves have completed.
  */
 function after(n, func) {
-  let count = 0
-  const times = n || 0
+  let times = n || 0
 
   return function(...args) {
-    count++
-    return count === times ? func.apply(this, args) : undefined
+    return --times < 1 ? func.apply(this, args) : undefined
   }
 }
 
