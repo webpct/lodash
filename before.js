@@ -14,6 +14,11 @@
  * // => Allows adding up to 4 contacts to the list.
  */
 function before(n, func) {
+  let times = 0
+
+  return function(...args) {
+    return n > ++times ? func.apply(this, args) : undefined
+  }
 }
 
 export default before
