@@ -17,6 +17,16 @@
  * // => [['a', 'b', 'c'], ['d']]
  */
 function chunk(array, size = 1) {
+  const shallowSource = [...array]
+  const shallowInit = [...array]
+  return typeof size === 'number' && size > 0 ? shallowInit.reduce((acc, item, idx, arr) => {
+    const chunkSlice = shallowSource.splice(0, size)
+    if (shallowSource.length <= size) {
+      arr.splice(1)
+      return [...acc, chunkSlice, shallowSource]
+    }
+    return [...acc, chunkSlice]
+  }, []) : []
 }
 
 export default chunk
