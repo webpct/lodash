@@ -21,6 +21,7 @@
  * // => [1, 2, 3]
  */
 function drop(array, n=1) {
+  return n > 0 ? [...array].splice(n) : [...array]
 }
 
 export default drop
