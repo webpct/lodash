@@ -12,7 +12,5 @@
  * divide(6, 4)
  * // => 1.5
  */
-const divide = (dividend, divisor) => {
-
-}
+const divide = (dividend, divisor) => dividend/divisor
 export default divide
