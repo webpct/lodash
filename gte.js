@@ -20,6 +20,7 @@
  * // => false
  */
 function gte(value, other) {
+  return value >= other
 }
 
 export default gte
