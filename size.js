@@ -18,6 +18,17 @@
  * // => 7
  */
 function size(collection) {
+  if (!collection) {
+    return 0
+  }
+
+  if (collection.size) {
+    return collection.size
+  }
+
+ // TODO: work with jQuery/MooTools DOM query collections
+
+  return Object.keys(collection).length
 }
 
 export default size
