@@ -14,6 +14,12 @@
  * // => { 'a': 1, 'b': 2 }
  */
 function zipObject(props, values) {
+  return props.reduce((acc, item, idx) => {
+      return {
+        ...acc,
+        [item]: values[idx]
+      }
+    }, {})
 }
 
 export default zipObject
