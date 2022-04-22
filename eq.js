@@ -30,10 +30,7 @@
  */
 function eq(value, other) {
   const isNaNCondition = typeof value === 'number' && typeof other === 'number' && isNaN(value) && isNaN(other)
-  if (isNaNCondition) {
-    return true
-  }
-  return value === other
+  return isNaNCondition ? isNaNCondition : value === other
 }
 
 export default eq
