@@ -14,8 +14,6 @@
  * lowerFirst('FRED')
  * // => 'fRED'
  */
-const lowerFirst = (string) => {
-
-}
+const lowerFirst = (string) => `${string[0].toLocaleLowerCase() + string.slice(1)}`
 
 export default lowerFirst
