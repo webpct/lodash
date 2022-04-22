@@ -20,7 +20,7 @@
  * // => false
  */
 function gt(value, other) {
-    return value > other
+  return value > other
 }
 
 export default gt
