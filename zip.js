@@ -14,6 +14,23 @@
  * // => [['a', 1, true], ['b', 2, false]]
  */
 function zip(...arrays) {
+  const initResult = Array.from(Array(arrays[0].length), () => []);
+  const orderedObjects = arrays.map((array) => {
+    return array.reduce((acc, arrayItem, idx) => {
+      return {
+        ...acc,
+        [idx]: arrayItem
+      }
+    }, {})
+  })
+
+  return initResult.map((item, idx) => {
+    const tempRes = []
+    orderedObjects.forEach((object) => {
+      tempRes.push(object[idx])
+    })
+    return tempRes
+  })
 }
 
 export default zip
