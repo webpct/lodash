@@ -15,6 +15,13 @@
  * // => `createApplication` is invoked once
  */
 function once(func) {
+
+  let times = 0
+
+  return function(...args) {
+    return times++ === 0 ? func.apply(this, args) : undefined
+  }
 }
+
 
 export default once
