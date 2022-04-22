@@ -25,11 +25,9 @@ function zip(...arrays) {
   })
 
   return initResult.map((item, idx) => {
-    const tempRes = []
     orderedObjects.forEach((object) => {
-      tempRes.push(object[idx])
+      item.push(object[idx])
     })
-    return tempRes
   })
 }
 
