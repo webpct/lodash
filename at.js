@@ -14,13 +14,16 @@
  * // => [3, 4]
  */
 const at = (object, ...paths) => {
+  const [nestedArray] = paths;
   const getPathValue = (entryPaths) => entryPaths.reduce((acc, path, idx, arr) => {
-    const matchedArrayIdx = path.match(/\[(.*?\d)\]/)
+    const isArrayPath = path.match(/\[(.*?\d)\]/)
+    const [_, matchedArrayIdx] = isArrayPath || []
+    const [currentPathKey] = path
 
-    if (matchedArrayIdx && acc[path[0]] && acc[path[0]][matchedArrayIdx[1]]) {
-      return acc[path[0]][matchedArrayIdx[1]]
+    if (isArrayPath && acc[currentPathKey] && acc[currentPathKey][matchedArrayIdx]) {
+      return acc[currentPathKey][matchedArrayIdx]
     }
-    if (!matchedArrayIdx && acc[path]) {
+    if (!isArrayPath && acc[path]) {
       return acc[path]
     }
     arr.splice(1)
@@ -32,15 +35,15 @@ const at = (object, ...paths) => {
     return getPathValue(exploredPath)
   })
 
-  const isPseudoArray = !(paths[0] && paths[0].sort) && typeof paths[0] === 'object'
-  const isArray = Array.isArray(paths[0])
+  const isPseudoArray = !(nestedArray && nestedArray.sort) && typeof nestedArray === 'object'
+  const isArray = Array.isArray(nestedArray)
 
   if (isPseudoArray) {
-    return parsePath([...paths[0]])
+    return parsePath([...nestedArray])
   }
 
   if (isArray) {
-    return parsePath(paths[0])
+    return parsePath(nestedArray)
   }
 
   return parsePath(paths)
