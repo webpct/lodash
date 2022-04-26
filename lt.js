@@ -20,6 +20,7 @@
  * // => false
  */
 function lt(value, other) {
+  return value < other
 }
 
 export default lt
