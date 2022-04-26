@@ -60,6 +60,20 @@
  * const status = debounced.pending() ? "Pending..." : "Ready"
  */
 function debounce(func, wait, options) {
+  let timeout
+  return function() {
+    const context = this, args = arguments
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      timeout = null
+      if (!options) {
+        func.apply(context, args)
+      }
+    }, wait)
+    if (options && !timeout) {
+      func.apply(context, args)
+    }
+  }
 
 }
 

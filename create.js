@@ -31,6 +31,9 @@
  * // => true
  */
 function create(prototype, properties) {
+  const currentPrototype = Object(prototype)
+  const resultObj = Object.create(currentPrototype)
+  return properties == null ? resultObj : Object.assign(resultObj, properties)
 }
 
 export default create

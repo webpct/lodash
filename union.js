@@ -14,6 +14,19 @@
  * // => [2, 3, 1]
  */
 function union(...arrays) {
+  const set = new Set()
+  const result = []
+
+  arrays.forEach((array) => {
+    array.forEach((item) => {
+      set.add(item)
+    })
+  })
+  for (const value of set) {
+    result.push(value)
+  }
+
+  return result
 }
 
 export default union

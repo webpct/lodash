@@ -20,6 +20,7 @@
  * // => false
  */
 function lte(value, other) {
+  return value <= other
 }
 
 export default lte

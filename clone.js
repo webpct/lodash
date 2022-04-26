@@ -24,6 +24,15 @@
  * // => true
  */
 function clone(value) {
+  if (typeof value === 'function' || value instanceof Error) {
+    return {}
+  }
+  if (typeof value === 'object' && Array.isArray(value)) {
+    const newArr = [...value]
+    return newArr
+  }
+  const newObj = value
+  return newObj
 }
 
 export default clone

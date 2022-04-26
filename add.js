@@ -11,7 +11,6 @@
  * add(6, 4)
  * // => 10
  */
-const add = (augend, addend) => {
+const add = (augend, addend) => augend + addend
 
-}
 export default add

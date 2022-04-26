@@ -1,7 +1,3 @@
-import map from './map.js'
-import baseIntersection from './.internal/baseIntersection.js'
-import castArrayLikeObject from './.internal/castArrayLikeObject.js'
-
 /**
  * Creates an array of unique values that are included in all given arrays
  * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
@@ -18,6 +14,7 @@ import castArrayLikeObject from './.internal/castArrayLikeObject.js'
  * // => [2]
  */
 function intersection(...arrays) {
+  return arrays.reduce((result, value) => result.filter((item) => value.includes(item)))
 }
 
 export default intersection

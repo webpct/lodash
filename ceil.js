@@ -17,6 +17,9 @@
  * ceil(6040, -2)
  * // => 6100
  */
-const ceil = createRound('ceil')
+function createRound(n, round) {
+  return round?  Math.ceil((n)*Math.pow(10, round))/Math.pow(10, round) : Math.ceil(n)
+}
+const ceil = createRound(4.006)
 
 export default ceil
