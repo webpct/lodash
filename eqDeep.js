@@ -25,6 +25,29 @@
  * // => false
  */
 function isEqual(value, other) {
+  if (typeof value !== 'object' && typeof other !== 'object' && value !== other) {
+    return false
+  }
+
+  const props1 = Object.getOwnPropertyNames(value)
+  const props2 = Object.getOwnPropertyNames(other)
+
+
+  if (props1.length !== props2.length) {
+    return false
+  }
+
+  for (let i = 0; i < props1.length; i += 1) {
+    const prop = props1[i]
+    const bothAreObjects = typeof (value[prop]) === 'object' && typeof (other[prop]) === 'object'
+
+    if ((!bothAreObjects && (value[prop] !== other[prop]))
+    || (bothAreObjects && !isEqual(value[prop], other[prop]))) {
+      return false
+    }
+  }
+
+  return true
 }
 
 export default isEqual
