@@ -18,6 +18,7 @@
  * // => 7
  */
 function size(collection) {
+  return collection ? Object.keys(collection).length || collection.size || Array.from(collection).length : 0
 }
 
 export default size
