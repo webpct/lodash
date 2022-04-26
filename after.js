@@ -16,6 +16,12 @@
  * // => Logs 'done saving!' after the two async saves have completed.
  */
 function after(n, func) {
+  n = n || 0
+  return function(...args) {
+    if (--n < 1) {
+      return func.apply(this, args)
+    }
+  }
 }
 
 export default after
