@@ -17,7 +17,10 @@
  * difference([2, 1], [2, 3])
  * // => [1]
  */
+
 function difference(array, ...values) {
+  const sumArr = [array, ...values]
+  return sumArr.reduce((res, value) =>  res.filter((resValue) => !value.includes(resValue)))
 }
 
 export default difference
