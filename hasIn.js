@@ -18,6 +18,20 @@
  * // => false
  */
 function hasIn(object, key) {
+  const checkPath = (entryPaths) => entryPaths.reduce((acc, path, idx, arr) => {
+    if (arr.length - 1 === idx) {
+      return acc.hasOwnProperty(path)
+    }
+
+    return Object.getPrototypeOf(object[path])
+  }, Object.getPrototypeOf(object) || {})
+
+
+  if (Array.isArray(key)) {
+    return checkPath(key)
+  }
+
+  return checkPath(key.split('.'))
 }
 
 export default hasIn
