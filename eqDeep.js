@@ -25,6 +25,7 @@
  * // => false
  */
 function isEqual(value, other) {
+  return JSON.stringify(value) === JSON.stringify(other)
 }
 
 export default isEqual

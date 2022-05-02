@@ -18,6 +18,7 @@ import castArrayLikeObject from './.internal/castArrayLikeObject.js'
  * // => [2]
  */
 function intersection(...arrays) {
+  return arrays.reduce((acc, array) => acc.filter((item) => array.includes(item)))
 }
 
 export default intersection

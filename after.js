@@ -16,6 +16,11 @@
  * // => Logs 'done saving!' after the two async saves have completed.
  */
 function after(n, func) {
+  let times = n || 0
+
+  return function(...args) {
+    return --times < 1 ? func.apply(this, args) : undefined
+  }
 }
 
 export default after

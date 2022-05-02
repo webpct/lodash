@@ -19,7 +19,21 @@
  * pad('abc', 2)
  * // => 'abc'
  */
-function pad(string, length, chars) {
+function pad(string, length, chars=' ') {
+  if (string.length >= length) {
+    return string
+  }
+
+  const padLength = length - string.length
+  const repeatChars = chars.repeat(padLength)
+
+  const startPadLength = ~~(padLength / 2)
+  const endPadLength = padLength - startPadLength
+
+  const startPad = repeatChars.slice(0, startPadLength)
+  const endPad = repeatChars.slice(0, endPadLength)
+
+  return `${startPad}${string}${endPad}`
 }
 
 export default pad

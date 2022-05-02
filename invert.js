@@ -17,6 +17,12 @@ const toString = Object.prototype.toString
  * // => { '1': 'c', '2': 'b' }
  */
 function invert(object) {
+  return Object.entries(object).reduce((acc, [key, value]) => {
+    return {
+        ...acc,
+        [value]: key
+    }
+    }, {})
 }
 
 export default invert

@@ -17,6 +17,10 @@
  * // => [3]
  */
 function without(array, ...values) {
+  return array.reduce((acc, item) =>
+    values.some((value) =>
+      value === item) ? acc : [...acc, item]
+  ,[])
 }
 
 export default without

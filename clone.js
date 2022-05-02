@@ -24,6 +24,7 @@
  * // => true
  */
 function clone(value) {
+  return [...value]
 }
 
 export default clone

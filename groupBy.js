@@ -16,7 +16,13 @@
  * // => { '4': [4.2], '6': [6.1, 6.3] }
  */
 function groupBy(collection, iteratee) {
-
+  return collection.reduce((acc, item) => {
+    const groupKey = iteratee(item)
+    return {
+        ...acc,
+        [groupKey]: acc[groupKey] ? [...acc[groupKey], item] : [item]
+    }
+  }, {})
 }
 
 export default groupBy

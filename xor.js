@@ -15,6 +15,27 @@
  * // => [1, 3]
  */
 function xor(...arrays) {
+  const result = []
+  const collection = new Map()
+
+  arrays.forEach((array) => {
+    array.forEach((item) => {
+      if (collection.has(item)) {
+        const value = collection.get(item)
+        collection.set(item, value + 1)
+      } else {
+        collection.set(item, 1)
+      }
+    })
+  })
+
+  for (const [key, value] of collection) {
+    if (value === 1) {
+      result.push(key)
+    }
+  }
+
+  return result
 }
 
 export default xor

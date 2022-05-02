@@ -16,6 +16,17 @@
  * // => [2, 1]
  */
 function uniq(array) {
+  const set = new Set()
+  const result = []
+
+  array.forEach((item) => {
+    set.add(item)
+  })
+  for (const value of set) {
+    result.push(value)
+  }
+
+  return result
 }
 
 export default uniq

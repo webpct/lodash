@@ -32,6 +32,26 @@
  * // => { '1': ['a', 'c'], '2': ['b'] } (iteration order is not guaranteed)
  */
 function reduce(collection, iteratee, accumulator) {
+  const sourceSetUp = (accumulator, collection) => {
+    const acc = accumulator !== undefined ? accumulator : collection[0]
+    const array = accumulator !== undefined ? [accumulator, ...collection] : collection
+    return [acc, array]
+  }
+
+  if (Array.isArray(collection)) {
+    let [acc, array] = sourceSetUp(accumulator, collection)
+    for (let idx = 1; idx < array.length; idx++) {
+      acc = iteratee(acc, array[idx], idx, array)
+    }
+    return acc
+  }
+
+  let [acc, array] = sourceSetUp(accumulator, Object.entries(collection))
+  for (let idx = 1; idx < array.length; idx++) {
+    const [key, value] = array[idx]
+    acc = iteratee(acc, value, key, idx, array)
+  }
+  return acc
 }
 
 export default reduce

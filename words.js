@@ -15,6 +15,7 @@
  * // => ['fred', 'barney', '&', 'pebbles']
  */
 function words(string, pattern) {
+  return string.match(pattern)
 }
 
 export default words

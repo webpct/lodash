@@ -11,7 +11,7 @@
  * capitalize('FRED')
  * // => 'Fred'
  */
-const capitalize = (string) => {}
+const capitalize = (string) => `${string[0].toUpperCase() + string.slice(1).toLocaleLowerCase()}`
 
 
 export default capitalize

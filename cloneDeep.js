@@ -16,6 +16,7 @@
  * // => false
  */
 function cloneDeep(value) {
+  return structuredClone(value)
 }
 
 export default cloneDeep
