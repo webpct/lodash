@@ -14,20 +14,23 @@
  * // => [3, 4]
  */
 const at = (object, ...paths) => {
-  const [nestedArray] = paths;
+  const [nestedArray] = paths
   const getPathValue = (entryPaths) => entryPaths.reduce((acc, path, idx, arr) => {
     const isArrayPath = path.match(/\[(.*?\d)\]/)
     const [_, matchedArrayIdx] = isArrayPath || []
     const [currentPathKey] = path
+    if (!acc) {
+      arr.splice(1)
+      return
+    }
 
-    if (isArrayPath && acc[currentPathKey] && acc[currentPathKey][matchedArrayIdx]) {
+    if (isArrayPath && acc[currentPathKey] && typeof acc[currentPathKey][matchedArrayIdx] !== 'undefined') {
       return acc[currentPathKey][matchedArrayIdx]
     }
-    if (!isArrayPath && acc[path]) {
+
+    if (!isArrayPath && typeof acc[path] !== 'undefined') {
       return acc[path]
     }
-    arr.splice(1)
-    return
   }, object || {})
 
   const parsePath = (entryPaths) => entryPaths.map((path) => {
