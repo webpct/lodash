@@ -20,6 +20,19 @@
  * // => false
  */
 function has(object, key) {
+  const checkPath = (entryPaths) => entryPaths.reduce((acc, path, idx, arr) => {
+    if (arr.length - 1 === idx) {
+      return acc.hasOwnProperty(path)
+    }
+
+    return object[path]
+  }, object || {})
+
+  if (Array.isArray(key)) {
+    return checkPath(key)
+  }
+
+  return checkPath(key.split('.'))
 }
 
 export default has
