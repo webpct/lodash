@@ -18,6 +18,7 @@
  * // => [1]
  */
 function difference(array, ...values) {
+  return [array, ...values].reduce((acc, array) => acc.filter((item) => !array.includes(item)))
 }
 
 export default difference
