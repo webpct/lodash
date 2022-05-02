@@ -47,6 +47,15 @@
  * jQuery(window).on('popstate', throttled.cancel)
  */
 function throttle(func, wait, options) {
+  let throttling = false
+  return function(...args) {
+    const ctx = this
+    if (!throttling) {
+      func.apply(ctx, args)
+      throttling = true
+      setTimeout(() => throttling = false, wait)
+    }
+  }
 }
 
 export default throttle
