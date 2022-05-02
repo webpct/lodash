@@ -19,7 +19,17 @@
  * padStart('abc', 2)
  * // => 'abc'
  */
-function padStart(string, length, chars) {
+function padStart(string, length, chars =' ') {
+  if (string.length >= length) {
+    return string
+  }
+
+  const padLength = length - string.length
+  const repeatChars = chars
+    .repeat(padLength)
+    .slice(0, padLength)
+
+  return `${repeatChars}${string}`
 }
 
 export default padStart
