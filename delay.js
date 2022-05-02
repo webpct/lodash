@@ -13,7 +13,8 @@
  * delay(text => console.log(text), 1000, 'later')
  * // => Logs 'later' after one second.
  */
-function delay(func, wait, ...args) {
+function delay(func, wait = 0, ...args) {
+  return setTimeout(func, wait, ...args)
 }
 
 export default delay
